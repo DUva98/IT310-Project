@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Pet Food Store</h1>
+        <button id="viewCartBtn">View Cart</button>
+    </header>
+	
+	<nav>
+	  <ul>
+		<li><a href="index.html">Home</a></li>
+		<li><a href="#">Products</a></li>
+	  </ul>
+		<div class="right-items">
+			<ul>
+			  <li><a href="register.html">Register</a></li>
+			  <li><a href="#">Log In</a></li>
+			  <li><a href="#">Cart</a></li>
+			</ul>
+		</div>
+	</nav>
+
+    <main>
+        <section class="main">
+            <h2>Login</h2>
+            <form action="#">
+                <label for="email">Email:</label><br>
+                <input type="email" id="email" name="email" required><br>
+
+                <label for="password">Password:</label><br>
+                <input type="password" id="password" name="password" minlength="8" required><br>
+
+                <input type="submit" value="Login">
+            </form>
+        </section>
+    </main>
+
+    <div id="cartModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Cart</h2>
+            <ul id="cartItems"></ul>
+            <button id="checkoutBtn">Checkout</button>
+        </div>
+    </div>
+
+    <script>
+        const viewCartBtn = document.getElementById('viewCartBtn');
+        const cartModal = document.getElementById('cartModal');
+        const closeBtn = document.querySelector('.close');
+        const checkoutBtn = document.getElementById('checkoutBtn');
+        const cartItemsList = document.getElementById('cartItems');
+
+        viewCartBtn.addEventListener('click', () => {
+            cartModal.style.display = 'block';
+        });
+
+        closeBtn.addEventListener('click', () => {
+            cartModal.style.display = 'none';
+        });
+
+        checkoutBtn.addEventListener('click', () => {
+            alert('Thank you for your purchase! No payment information is required for this demonstration.');
+            // Perform additional actions if needed, such as clearing the cart
+            cartItemsList.innerHTML = '';
+        });
+
+        window.addEventListener('click', (event) => {
+            if (event.target === cartModal) {
+                cartModal.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
