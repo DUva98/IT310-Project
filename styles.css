@@ -144,3 +144,40 @@ nav {
 .search-bar button[type="submit"]:hover {
     background-color: #45a049;
 }
+
+.category-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+}
+
+.category-button {
+    margin: 0 20px;
+}
+
+.category-button a {
+    display: inline-block;
+    text-align: center;
+    text-decoration: none;
+    color: #000;
+}
+
+.category-button img {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+.category-button h3 {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.category-button img {
+    max-width: 100%; /* Set maximum width to prevent stretching */
+    height: auto; /* Let the height scale automatically */
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
