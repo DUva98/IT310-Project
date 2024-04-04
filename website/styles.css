@@ -181,3 +181,58 @@ nav {
     border-radius: 50%;
     margin-bottom: 10px;
 }
+
+.filters {
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 20px;
+}
+
+.filters h2 {
+    margin-bottom: 10px;
+}
+
+.filter-group {
+    display: inline-block;
+    vertical-align: top; /* Align the filters to the top */
+    margin-right: 20px; /* Add some space between filters */
+}
+
+.filter-group:last-child {
+    margin-right: 0; /* Remove margin from the last filter */
+}
+
+.filter-group label {
+    margin-right: 5px;
+}
+
+.filter-group select {
+    padding: 5px;
+    border-radius: 4px;
+}
+
+
+.products {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.product {
+    width: 200px;
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.addToCartBtn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+}
+
+.addToCartBtn:hover {
+    background-color: #45a049;
+}

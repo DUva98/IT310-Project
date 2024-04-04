@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pet Food Store</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Pet Food Store</h1>
+    </header>
+	
+	<nav>
+	  <ul>
+		<li><a href="index.html">Home</a></li>
+		<li><a href="products.html">Products</a></li>
+	  </ul>
+	  
+		<div class="search-bar">
+            <input type="text" placeholder="Search...">
+            <button type="submit">Search</button>
+        </div>
+	  
+		<div class="right-items">
+			<ul>
+			  <li><a href="register.html">Register</a></li>
+			  <li><a href="login.html">Log In</a></li>
+			  <li><a href="cart.html">Cart</a></li>
+			</ul>
+		</div>
+	</nav>
+
+    <main>
+		<section class="filters">
+        <h2>Filters</h2>
+		<div class="filter-group">
+            <label for="category">Category:</label>
+            <select id="category">
+				<option value="all">All</option>
+                <option value="dog">Dog</option>
+                <option value="cat">Cat</option>
+                <option value="fish">Fish</option>
+				<option value="bird">Bird</option>
+                <option value="reptile">Reptile</option>
+                <option value="small">Small Pet</option>
+            </select>
+        </div>
+
+        <div class="filter-group">
+            <label for="size">Price:</label>
+            <select id="size">
+                <option value="all">All</option>
+                <option value="<10">Less than $10</option>
+                <option value="10-25">$10 to $25</option>
+				<option value="25-50">$25 to $50</option>
+				<option value="50-100">$50 to $100</option>
+				<option value="100-200">$100 to $200</option>
+            </select>
+        </div>
+    </section>
+	<h2>All Items:</h2>
+
+    </main>
+
+
+</body>
+</html>

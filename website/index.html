@@ -9,13 +9,12 @@
 <body>
     <header>
         <h1>Pet Food Store</h1>
-        <button id="viewCartBtn">View Cart</button>
     </header>
 	
 	<nav>
 	  <ul>
 		<li><a href="index.html">Home</a></li>
-		<li><a href="#">Products</a></li>
+		<li><a href="products.html">Products</a></li>
 	  </ul>
 	  
 		<div class="search-bar">
@@ -27,7 +26,7 @@
 			<ul>
 			  <li><a href="register.html">Register</a></li>
 			  <li><a href="login.html">Log In</a></li>
-			  <li><a href="#">Cart</a></li>
+			  <li><a href="cart.html">Cart</a></li>
 			</ul>
 		</div>
 	</nav>
@@ -36,37 +35,37 @@
 	
 		<section class="category-buttons">
             <div class="category-button">
-                <a href="#">
+                <a href="dogProducts.html">
                     <img src="dog.jpg" alt="Dog">
                     <h3>Dog</h3>
                 </a>
             </div>
             <div class="category-button">
-                <a href="#">
+                <a href="catProducts.html">
                     <img src="cat.jpg" alt="Cat">
                     <h3>Cat</h3>
                 </a>
             </div>
             <div class="category-button">
-                <a href="#">
+                <a href="fishProducts.html">
                     <img src="fish.jpg" alt="Fish">
                     <h3>Fish</h3>
                 </a>
             </div>
             <div class="category-button">
-                <a href="#">
+                <a href="birdProducts.html">
                     <img src="bird.jpg" alt="Bird">
                     <h3>Bird</h3>
                 </a>
             </div>
             <div class="category-button">
-                <a href="#">
+                <a href="reptileProducts.html">
                     <img src="reptile.jpg" alt="Reptile">
                     <h3>Reptile</h3>
                 </a>
             </div>
             <div class="category-button">
-                <a href="#">
+                <a href="smallProducts.html">
                     <img src="smallpet.jpg" alt="Small Pet">
                     <h3>Small Pet</h3>
                 </a>
@@ -74,60 +73,6 @@
             <!-- Add more buttons for other categories -->
         </section>
 		
-        <section class="product">
-            <h2>Pet Food</h2>
-            <p>$10</p>
-            <button class="addToCartBtn">Add to Cart</button>
-        </section>
     </main>
-
-    <div id="cartModal" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <h2>Cart</h2>
-            <ul id="cartItems"></ul>
-            <button id="checkoutBtn">Checkout</button>
-        </div>
-    </div>
-
-    <script>
-        const addToCartButtons = document.querySelectorAll('.addToCartBtn');
-        const viewCartBtn = document.getElementById('viewCartBtn');
-        const cartModal = document.getElementById('cartModal');
-        const closeBtn = document.querySelector('.close');
-        const checkoutBtn = document.getElementById('checkoutBtn');
-        const cartItemsList = document.getElementById('cartItems');
-
-        addToCartButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                const product = button.parentElement;
-                const productName = product.querySelector('h2').textContent;
-                const productPrice = product.querySelector('p').textContent;
-                const cartItem = document.createElement('li');
-                cartItem.textContent = `${productName} - ${productPrice}`;
-                cartItemsList.appendChild(cartItem);
-            });
-        });
-
-        viewCartBtn.addEventListener('click', () => {
-            cartModal.style.display = 'block';
-        });
-
-        closeBtn.addEventListener('click', () => {
-            cartModal.style.display = 'none';
-        });
-
-        checkoutBtn.addEventListener('click', () => {
-            alert('Thank you for your purchase! No payment information is required for this demonstration.');
-            // Perform additional actions if needed, such as clearing the cart
-            cartItemsList.innerHTML = '';
-        });
-
-        window.addEventListener('click', (event) => {
-            if (event.target === cartModal) {
-                cartModal.style.display = 'none';
-            }
-        });
-    </script>
 </body>
 </html>
