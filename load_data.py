@@ -13,7 +13,7 @@ with open(FILE_NAME, 'r') as file:
             exit(1)
         data = {
             "name": line[0],
-            "price": line[1],
+            "price": float(line[1]),
             "description": line[2],
             "pet_type": line[3],
             "age": line[5],
