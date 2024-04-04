@@ -54,7 +54,9 @@ express()
     if (!myVal) {
       res.status(404).send("Item Not Found");
     } else {
-      res.send(myVal);
+      for (key in myVal) {
+        res.send(myVal[key]);
+      }
     }
   })
   .listen(PORT, () => console.log(`Listening on ${PORT}`));
