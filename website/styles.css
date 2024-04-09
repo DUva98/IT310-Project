@@ -236,3 +236,21 @@ nav {
 .addToCartBtn:hover {
     background-color: #45a049;
 }
+
+.checkout-button {
+            float: right;
+			display: inline-block;
+			padding: 8px 20px;
+			margin-right: 20px;
+			background-color: #4CAF50;
+			color: white;
+			text-align: center;
+            text-decoration: none;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+}
+
+.checkout-button:hover {
+            background-color: #45a049;
+        }
