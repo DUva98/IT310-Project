@@ -2,6 +2,7 @@ const express = require("express");
 var bodyParser = require("body-parser");
 var admin = require("firebase-admin");
 var serviceAccount = require("./firebase-adminsdk.json");
+var path = require('path');
 const { v4: uuidv4 } = require("uuid");
 const bcrypt = require("bcryptjs");
 const PORT = process.env.PORT || 80;
@@ -13,6 +14,7 @@ admin.initializeApp({
 var database = admin.database();
 
 express()
+  .use(express.static(path.join(__dirname, 'website')))
   .use(express.json())
   .use(bodyParser.urlencoded({ extended: false }))
   .post("/createItem", async (req, res) => {
