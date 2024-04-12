@@ -5,64 +5,140 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pet Food Store</title>
     <link rel="stylesheet" href="styles.css">
+    <style>
+        #product-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .product {
+            width: 150px;
+            text-align: center;
+        }
+
+        .product img {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .product h3, .product p {
+            margin: 0;
+            padding: 5px;
+        }
+    </style>
 </head>
 <body>
     <header>
         <h1>Pet Food Store</h1>
     </header>
-	
-	<nav>
-	  <ul>
-		<li><a href="index.html">Home</a></li>
-		<li><a href="products.html">Products</a></li>
-	  </ul>
-	  
-		<div class="search-bar">
+    
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="products.html">Products</a></li>
+        </ul>
+      
+        <div class="search-bar">
             <input type="text" placeholder="Search...">
             <button type="submit">Search</button>
         </div>
-	  
-		<div class="right-items">
-			<ul>
-			  <li><a href="register.html">Register</a></li>
-			  <li><a href="login.html">Log In</a></li>
-			  <li><a href="cart.html">Cart</a></li>
-			</ul>
-		</div>
-	</nav>
+      
+        <div class="right-items">
+            <ul>
+                <li><a href="register.html">Register</a></li>
+                <li><a href="login.html">Log In</a></li>
+                <li><a href="cart.html">Cart</a></li>
+            </ul>
+        </div>
+    </nav>
 
     <main>
-		<section class="filters">
-        <h2>Filters</h2>
-		<div class="filter-group">
-            <label for="category">Category:</label>
-            <select id="category">
-				<option value="all">All</option>
-                <option value="dog">Dog</option>
-                <option value="cat">Cat</option>
-                <option value="fish">Fish</option>
-				<option value="bird">Bird</option>
-                <option value="reptile">Reptile</option>
-                <option value="small">Small Pet</option>
-            </select>
-        </div>
+        <section class="filters">
+            <h2>Filters</h2>
+            <div class="filter-group">
+                <label for="category">Category:</label>
+                <select id="category">
+                    <option value="all">All</option>
+                    <option value="Dog">Dog</option>
+                    <option value="Cat">Cat</option>
+                    <option value="Fish">Fish</option>
+                    <option value="Bird">Bird</option>
+                    <option value="Reptile">Reptile</option>
+                    <option value="Small Pet">Small Pet</option>
+                </select>
+            </div>
 
-        <div class="filter-group">
-            <label for="size">Price:</label>
-            <select id="size">
-                <option value="all">All</option>
-                <option value="10">Less than $10</option>
-                <option value="10-25">$10 to $25</option>
-				<option value="25-50">$25 to $50</option>
-				<option value="50-100">$50 to $100</option>
-				<option value="100-200">$100 to $200</option>
-            </select>
-        </div>
-    </section>
-	<h2>All Items:</h2>
+            <div class="filter-group">
+                <label for="price">Price:</label>
+                <select id="price">
+                    <option value="all">All</option>
+                    <option value="0-10">Less than $10</option>
+                    <option value="10-25">$10 to $25</option>
+                    <option value="25-50">$25 to $50</option>
+                    <option value="50-100">$50 to $100</option>
+                    <option value="100-200">$100 to $200</option>
+                </select>
+            </div>
+        </section>
 
+        <section id="product-list">
+            <!-- Product items will be displayed here -->
+        </section>
     </main>
 
+    <script>
+        async function fetchItems() {
+            try {
+                const response = await fetch('http://localhost/getitems');
+                const data = await response.json();
+                return data;
+            } catch (error) {
+                console.error('Error fetching items:', error);
+                return [];
+            }
+        }
 
+        const categorySelect = document.getElementById('category');
+        const priceSelect = document.getElementById('price');
+        const productList = document.getElementById('product-list');
+
+        async function updateProductList() {
+            const items = await fetchItems();
+            const category = categorySelect.value;
+            const priceRange = priceSelect.value;
+
+            const filteredItems = items.filter(item => {
+                const categoryMatch = category === 'all' || item.pet_type === category;
+                const priceMatch = priceRange === 'all' || (item.price >= parseInt(priceRange.split('-')[0]) && item.price <= parseInt(priceRange.split('-')[1]));
+                return categoryMatch && priceMatch;
+            });
+
+            renderProducts(filteredItems);
+        }
+
+        function renderProducts(items) {
+            productList.innerHTML = '';
+            items.forEach(item => {
+                const productDiv = document.createElement('div');
+                productDiv.classList.add('product');
+                productDiv.innerHTML = `
+                    <img src="${item.imageURL}" alt="${item.name}">
+                    <h3>${item.name}</h3>
+                    <p>${item.description}</p>
+                    <p>$${item.price}</p>
+                    <a href="item.html?id=${item.id}">View Details</a>
+                `;
+                productList.appendChild(productDiv);
+            });
+        }
+
+        categorySelect.addEventListener('change', updateProductList);
+        priceSelect.addEventListener('change', updateProductList);
+
+        updateProductList(); // Initially render products
+    </script>
 </body>
 </html>
