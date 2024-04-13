@@ -36,7 +36,7 @@
                 <label for="password">Password:</label><br>
                 <input type="password" id="password" name="password" minlength="8" required><br>
 
-                <input type="submit" value="Login" onclick=""> 
+                <input type="submit" value="Login" onclick="submitLogin()"> 
                 <!--Create login javascript function ^ Will send request to backend to check /signin in index.js
                 will get back boolean if there is error, if not you will get back a key -->
             </form>
@@ -53,31 +53,28 @@
     </div>
 
     <script>
-        const viewCartBtn = document.getElementById('viewCartBtn');
-        const cartModal = document.getElementById('cartModal');
-        const closeBtn = document.querySelector('.close');
-        const checkoutBtn = document.getElementById('checkoutBtn');
-        const cartItemsList = document.getElementById('cartItems');
-
-        viewCartBtn.addEventListener('click', () => {
-            cartModal.style.display = 'block';
-        });
-
-        closeBtn.addEventListener('click', () => {
-            cartModal.style.display = 'none';
-        });
-
-        checkoutBtn.addEventListener('click', () => {
-            alert('Thank you for your purchase! No payment information is required for this demonstration.');
-            // Perform additional actions if needed, such as clearing the cart
-            cartItemsList.innerHTML = '';
-        });
-
-        window.addEventListener('click', (event) => {
-            if (event.target === cartModal) {
-                cartModal.style.display = 'none';
+        async function submitLogin(){
+            event.preventDefault();
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const response = await fetch('/signin', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({email, password})
+            });
+            const data = await response.json();
+            if(data.error){
+                alert(data.data);
+            } else {
+                sessionStorage.setItem('key', data.data);
+                sessionStorage.setItem('firstName', data.firstName);
+                sessionStorage.setItem('lastName', data.lastName);
+                sessionStorage.setItem('email', data.email);
+                window.location.href = '/index.html';
             }
-        });
+        }
     </script>
 </body>
 </html>
