@@ -10,25 +10,25 @@
     <header>
         <h1>Pet Food Store</h1>
     </header>
-	
-	<nav>
-	  <ul>
-		<li><a href="index.html">Home</a></li>
-		<li><a href="products.html">Products</a></li>
-	  </ul>
-		<div class="right-items">
-			<ul>
-			  <li><a href="register.html">Register</a></li>
-			  <li><a href="login.html">Log In</a></li>
-			  <li><a href="cart.html">Cart</a></li>
-			</ul>
-		</div>
-	</nav>
+    
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="products.html">Products</a></li>
+      </ul>
+        <div class="right-items">
+            <ul>
+              <li><a href="register.html">Register</a></li>
+              <li><a href="login.html">Log In</a></li>
+              <li><a href="cart.html">Cart</a></li>
+            </ul>
+        </div>
+    </nav>
 
     <main>
         <section class="main">
             <h2>Register</h2>
-            <form action="#">
+            <form id="registrationForm" action="/signUp" method="POST">
                 <label for="firstName">First Name:</label><br>
                 <input type="text" id="firstName" name="firstName" required><br>
 
@@ -82,6 +82,32 @@
         window.addEventListener('click', (event) => {
             if (event.target === cartModal) {
                 cartModal.style.display = 'none';
+            }
+        });
+
+        document.getElementById('registrationForm').addEventListener('submit', async (event) => {
+            event.preventDefault();
+            const form = event.target;
+            const formData = new FormData(form);
+            const formObject = {};
+            formData.forEach((value, key) => {
+                formObject[key] = value;
+            });
+            
+            const response = await fetch('/signUp', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(formObject)
+            });
+            
+            const data = await response.json();
+            if (data.error) {
+                alert(data.data);
+            } else {
+                alert('Registration successful!');
+                // Redirect to another page or perform other actions
             }
         });
     </script>
