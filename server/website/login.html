@@ -26,20 +26,26 @@
 		</div>
 	</nav>
 
-    <main>
+    <main class="checkout-body">
         <section class="main">
-            <h2>Login</h2>
-            <form action="#">
-                <label for="email">Email:</label><br>
-                <input type="email" id="email" name="email" required><br>
-
-                <label for="password">Password:</label><br>
-                <input type="password" id="password" name="password" minlength="8" required><br>
-
-                <input type="submit" value="Login" onclick="submitLogin()"> 
-                <!--Create login javascript function ^ Will send request to backend to check /signin in index.js
-                will get back boolean if there is error, if not you will get back a key -->
-            </form>
+			<div class="checkout-form">
+				<h2>Login</h2>
+				<form action="#">
+					<div class="form-group">
+						<label for="email">Email:</label>
+						<input type="email" id="email" name="email" required>
+					</div>
+					<div class="form-group">
+						<label for="password">Password:</label>
+						<input type="password" id="password" name="password" minlength="8" required>
+					</div>
+					<div class="form-group">
+						<input type="submit" value="Login" onclick="submitLogin()">
+					</div>
+						<!--Create login javascript function ^ Will send request to backend to check /signin in index.js
+						will get back boolean if there is error, if not you will get back a key -->
+				</form>
+			</div>
         </section>
     </main>
 
