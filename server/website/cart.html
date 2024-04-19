@@ -32,40 +32,71 @@
 	</nav>
 
     <main>
-		<section class="filters">
-        <h2>Filters</h2>
-		<div class="filter-group">
-            <label for="category">Category:</label>
-            <select id="category">
-				<option value="all">All</option>
-                <option value="dog">Dog</option>
-                <option value="cat">Cat</option>
-                <option value="fish">Fish</option>
-				<option value="bird">Bird</option>
-                <option value="reptile">Reptile</option>
-                <option value="small">Small Pet</option>
-            </select>
-        </div>
+        <section class="filters">
+            <h2>Filters</h2>
+            <div class="filter-group">
+                <label for="category">Category:</label>
+                <select id="category">
+                    <option value="all">All</option>
+                    <option value="dog">Dog</option>
+                    <option value="cat">Cat</option>
+                    <option value="fish">Fish</option>
+                    <option value="bird">Bird</option>
+                    <option value="reptile">Reptile</option>
+                    <option value="small">Small Pet</option>
+                </select>
+            </div>
 
-        <div class="filter-group">
-            <label for="size">Price:</label>
-            <select id="size">
-                <option value="all">All</option>
-                <option value="<10">Less than $10</option>
-                <option value="10-25">$10 to $25</option>
-				<option value="25-50">$25 to $50</option>
-				<option value="50-100">$50 to $100</option>
-				<option value="100-200">$100 to $200</option>
-            </select>
-        </div>
-		
-		<a href="checkoutOptions.html" class="checkout-button-one">Checkout</a>
-		
-    </section>
-	<h2>Cart:</h2>
+            <div class="filter-group">
+                <label for="size">Price:</label>
+                <select id="size">
+                    <option value="all">All</option>
+                    <option value="<10">Less than $10</option>
+                    <option value="10-25">$10 to $25</option>
+                    <option value="25-50">$25 to $50</option>
+                    <option value="50-100">$50 to $100</option>
+                    <option value="100-200">$100 to $200</option>
+                </select>
+            </div>
+            
+            <a href="checkoutOptions.html" class="checkout-button-one">Checkout</a>
+        </section>
 
+        <section class="cart">
+            <h2>Cart:</h2>
+            <div id="cart-items">
+                <!-- Hardcoded item -->
+                <div class="cart-item">
+                    <img src="Hardcode.jpg" alt="Hardcoded Item">
+                    <div class="item-details">
+                        <h3>Open Top Litter Box</h3>
+                        <p>Litter Box with open top for easy entry & exit</p>
+                        <p>$13.99</p>
+                        <label for="quantity">Quantity:</label>
+                        <select id="quantity">
+                            <option value="1" selected>1</option>
+                            <!-- Add more quantity options if needed -->
+                        </select>
+                        
+                    </div>
+                </div>
+                <div class="cart-item">
+                    <img src="Forager.jpg" alt="Second Hardcoded Item">
+                    <div class="item-details">
+                        <h3>Mug Forager Bird Toy</h3>
+                        <p>Interactive toy for mental stimulation.</p>
+                        <p>$21.99</p>
+                        <label for="quantity">Quantity:</label>
+                        <select id="quantity">
+                            <option value="2" selected>2</option>
+                            <!-- Add more quantity options if needed -->
+                        </select>
+                        
+                    </div>
+                </div>
+                
+            </div>
+        </section>
     </main>
-
-
 </body>
 </html>
